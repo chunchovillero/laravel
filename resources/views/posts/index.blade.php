@@ -1,25 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+@extends('layouts.app')
 
-</head>
-<body>
-	<div class="container">
-		<div class="row">
+@section('content')
+
+
+@foreach($posts as $post)
+<div class="row">
 			<div class="col-md-12">
-				<h1>Reeditt Clone</h1>
+				<a href="{{ route('post_path', ['post' => $post->id]) }}"><h2>{{$post->title}}</h2></a>
+				<p>{{$post->created_at->diffForHumans()}}</p>
 			</div>
 		</div>
+@endforeach
 
-		<div class="row">
-			<div class="col-md-12">
-				<h2>Title</h2>
-				<p> Posteado hace 5 horas</p>
-			</div>
-		</div>
-	</div>
-</body>
-</html>
+@endsection
